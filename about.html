@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>About - Navisha Sooku Wellness</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #e0f7fa 0%, #f6f8f9 100%);
+            min-height: 100vh;
+        }
+        nav {
+            background: rgba(255,255,255,0.85);
+            box-shadow: 0 2px 12px rgba(76,175,80,0.07);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 0;
+            border-bottom-left-radius: 40px 20px;
+            border-bottom-right-radius: 40px 20px;
+        }
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            padding: 0.8rem 0;
+        }
+        .nav-links a {
+            color: #35796b;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.08rem;
+            letter-spacing: 1px;
+            padding: 8px 18px;
+            border-radius: 22px;
+            transition: background 0.2s, color 0.2s;
+        }
+        .nav-links a:hover, .nav-links a.active {
+            background: linear-gradient(90deg, #4a8d7c 60%, #6ed3cf 100%);
+            color: #fff;
+        }
+        .about-hero {
+            max-width: 900px;
+            margin: 80px auto 0 auto;
+            background: #fff;
+            border-radius: 32px;
+            box-shadow: 0 4px 24px rgba(0,0,0,0.07);
+            padding: 48px 36px 40px 36px;
+            text-align: center;
+            position: relative;
+        }
+        .about-hero h2 {
+            color: #4a8d7c;
+            margin-bottom: 0.7em;
+            font-size: 2rem;
+        }
+        .about-hero p {
+            color: #35796b;
+            font-size: 1.13rem;
+            margin-bottom: 2.2em;
+            line-height: 1.7;
+        }
+        .features-row {
+            display: flex;
+            justify-content: center;
+            gap: 2.5rem;
+            flex-wrap: wrap;
+            margin-top: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+        .features-row-bottom {
+            display: flex;
+            justify-content: center;
+            gap: 2.5rem;
+            flex-wrap: wrap;
+            margin-top: 1.5rem;
+            margin-bottom: 2.5rem;
+        }
+        .feature-col {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-width: 140px;
+            max-width: 180px;
+            margin-bottom: 1.5rem;
+        }
+        .feature-icon-box {
+            background: linear-gradient(135deg, #e0f7fa 60%, #b2dfdb 100%);
+            border-radius: 50%;
+            width: 90px;
+            height: 90px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1em auto;
+            box-shadow: 0 2px 12px rgba(76,175,80,0.10);
+            font-size: 2.7rem;
+            color: #4a8d7c;
+            transition: transform 0.18s cubic-bezier(.4,2,.6,1), box-shadow 0.2s, background 0.2s;
+            cursor: pointer;
+            border: 2px solid #b2dfdb;
+        }
+        .feature-icon-box:hover {
+            transform: scale(1.13) rotate(-8deg);
+            background: linear-gradient(135deg, #6ed3cf 60%, #4a8d7c 100%);
+            color: #fff;
+            box-shadow: 0 8px 24px rgba(76,175,80,0.18);
+            border-color: #4a8d7c;
+        }
+        .feature-label {
+            color: #35796b;
+            font-size: 1.08rem;
+            font-weight: 600;
+            margin-bottom: 0.5em;
+        }
+        .feature-desc {
+            color: #35796b;
+            font-size: 1rem;
+            opacity: 0.85;
+            margin-bottom: 0.8em;
+        }
+        @media (max-width: 900px) {
+            .about-hero { padding: 18px 8px; border-radius: 20px; }
+            .about-hero h2 { font-size: 1.3rem; }
+            .features-row, .features-row-bottom { flex-wrap: wrap; gap: 1.5rem; }
+            .feature-col { min-width: 120px; max-width: 100%; }
+        }
+        footer {
+            background: #4a8d7c;
+            color: #fff;
+            padding: 2rem 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .footer-contact {
+            margin-bottom: 1.5rem;
+            font-size: 0.95rem;
+        }
+        .footer-contact a {
+            color: #fff;
+            text-decoration: underline;
+        }
+        .footer-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+        .footer-btn {
+            background: rgba(255,255,255,0.1);
+            color: #fff;
+            border: none;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 1.2rem;
+            transition: background 0.2s, transform 0.2s;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.1);
+        }
+        .footer-btn:hover {
+            background: rgba(255,255,255,0.2);
+            transform: translateY(-2px);
+        }
+    </style>
+    <script>
+        function showFeatureDesc(desc) {
+            const modal = document.getElementById('feature-modal');
+            document.getElementById('feature-modal-desc').textContent = desc;
+            modal.style.display = 'flex';
+        }
+        function closeFeatureModal() {
+            document.getElementById('feature-modal').style.display = 'none';
+        }
+        window.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') closeFeatureModal();
+        });
+        document.addEventListener('DOMContentLoaded', function() {
+            document.getElementById('feature-modal').addEventListener('click', function(e) {
+                if (e.target === this) closeFeatureModal();
+            });
+        });
+        function openWhatsApp() {
+            window.open('https://wa.me/27832040791', '_blank');
+        }
+    </script>
+</head>
+<body>
+    <nav>
+        <div class="nav-links">
+            <a href="wellness.html">Home</a>
+            <a href="About.html" class="active">About</a>
+            <a href="services.html">Services</a>
+        </div>
+    </nav>
+    <div class="about-hero">
+        <h2>About Navisha Sooku</h2>
+        <p>
+            Navisha Sooku is a holistic wellness therapist dedicated to helping you achieve balance and vitality. Her approach blends modern bio-resonance, kinesiology, auricular acupuncture, corporate wellness, and frequency therapies with ancient healing wisdom, creating a nurturing space for your mind and body.
+        </p>
+        <div class="features-row">
+            <div class="feature-col">
+                <div class="feature-icon-box" title="Rife Therapy"
+                    onclick="showFeatureDesc('Rife Therapy uses gentle frequencies to support your body’s natural healing and balance at the cellular level.')">
+                    &#128171;
+                </div>
+                <div class="feature-label">Rife Therapy</div>
+            </div>
+            <div class="feature-col">
+                <div class="feature-icon-box" title="Cupping"
+                    onclick="showFeatureDesc('Cupping is an ancient technique that improves circulation, relieves pain, and helps detoxify your body.')">
+                    &#129658;
+                </div>
+                <div class="feature-label">Cupping</div>
+            </div>
+            <div class="feature-col">
+                <div class="feature-icon-box" title="Bio-Resonance"
+                    onclick="showFeatureDesc('Bio-Resonance uses advanced biofeedback to identify and address energetic imbalances for holistic wellness.')">
+                    &#128300;
+                </div>
+                <div class="feature-label">Bio-Resonance</div>
+            </div>
+        </div>
+        <div class="features-row-bottom">
+            <div class="feature-col">
+                <div class="feature-icon-box" title="Kinesiology"
+                    onclick="showFeatureDesc('Kinesiology is a gentle, holistic therapy that uses muscle testing to identify imbalances and support your body’s natural healing process.')">
+                    &#129495;
+                </div>
+                <div class="feature-label">Kinesiology</div>
+            </div>
+            <div class="feature-col">
+                <div class="feature-icon-box" title="Auricular Acupuncture"
+                    onclick="showFeatureDesc('Auricular Acupuncture uses gentle ear acupuncture to support stress relief, pain management, and balance.')">
+                    &#129658;&#128137;
+                </div>
+                <div class="feature-label">Auricular Acupuncture</div>
+            </div>
+            <div class="feature-col">
+                <div class="feature-icon-box" title="Corporate Wellness"
+                    onclick="showFeatureDesc('Corporate Wellness programs are tailored for organizations to enhance employee well-being and productivity.')">
+                    &#128188;
+                </div>
+                <div class="feature-label">Corporate Wellness</div>
+            </div>
+        </div>
+    </div>
+    <!-- Feature Modal -->
+    <div id="feature-modal" style="display:none;position:fixed;z-index:1000;left:0;top:0;width:100vw;height:100vh;background:rgba(52,73,94,0.25);justify-content:center;align-items:center;">
+        <div style="background:#fff;border-radius:32px 48px 32px 48px/48px 32px 48px 32px;box-shadow:0 8px 32px rgba(76,175,80,0.13);padding:2.5rem 2rem 2rem 2rem;max-width:90vw;width:350px;text-align:center;position:relative;">
+            <p id="feature-modal-desc" style="color:#35796b;font-size:1.13rem;margin-bottom:2em;"></p>
+            <button onclick="closeFeatureModal()" style="background:linear-gradient(90deg,#4a8d7c 60%,#6ed3cf 100%);color:#fff;border:none;border-radius:22px 22px 30px 30px/22px 22px 30px 30px;padding:10px 32px;font-size:1rem;font-weight:600;cursor:pointer;box-shadow:0 2px 12px rgba(76,175,80,0.07);transition:background 0.2s;">Close</button>
+        </div>
+    </div>
+    <footer>
+        <div class="footer-contact">
+            Contact: <a href="tel:+27832040791" style="color:#fff;text-decoration:underline;">+27 83 2040 791</a> | 
+            <a href="mailto:navisha.sooku@email.com" style="color:#fff;text-decoration:underline;">navisha.sooku@email.com</a>
+            <br>
+            <span style="font-size:1.05rem;opacity:0.9;">Location: Johannesburg, Sunninghill</span>
+        </div>
+        <div class="footer-buttons">
+            <button class="footer-btn" title="WhatsApp" onclick="openWhatsApp()">&#128241;</button>
+            <button class="footer-btn" title="Email" onclick="window.open('mailto:navisha.sooku@gmail.com')">&#9993;</button>
+            <button class="footer-btn" title="Call" onclick="window.open('tel:+27832040791')">&#128222;</button>
+        </div>
+        <p style="margin-top:0.5em;">&copy; 2024 Navisha Sooku Wellness</p>
+    </footer>
+</body>
+</html>

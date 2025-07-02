@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Navisha Sooku Wellness</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #e0f7fa 0%, #f6f8f9 100%);
+            min-height: 100vh;
+            position: relative;
+            overflow-x: hidden;
+        }
+        /* Flowy SVG background waves */
+        .bg-wave {
+            position: absolute;
+            left: 0; right: 0;
+            width: 100vw;
+            z-index: 0;
+        }
+        .bg-wave.top {
+            top: 0;
+        }
+        .bg-wave.bottom {
+            bottom: 0;
+            transform: rotate(180deg);
+        }
+        nav {
+            background: rgba(255,255,255,0.85);
+            box-shadow: 0 2px 12px rgba(76,175,80,0.07);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 0;
+            border-bottom-left-radius: 40px 20px;
+            border-bottom-right-radius: 40px 20px;
+            position: relative;
+            z-index: 2;
+        }
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            padding: 0.8rem 0;
+        }
+        .nav-links a {
+            color: #35796b;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.08rem;
+            letter-spacing: 1px;
+            padding: 8px 18px;
+            border-radius: 22px;
+            transition: background 0.2s, color 0.2s;
+        }
+        .nav-links a:hover, .nav-links a.active {
+            background: linear-gradient(90deg, #4a8d7c 60%, #6ed3cf 100%);
+            color: #fff;
+        }
+        header {
+            background: transparent;
+            color: #35796b;
+            padding: 38px 0 18px 0;
+            text-align: center;
+            letter-spacing: 1px;
+            position: relative;
+            z-index: 2;
+        }
+        header h1 {
+            font-size: 2.8rem;
+            margin-bottom: 0.3em;
+            letter-spacing: 2.5px;
+            font-weight: 800;
+            text-shadow: 0 4px 24px rgba(76,175,80,0.10);
+            animation: fadeInDown 1s;
+            font-family: 'Segoe UI Semibold', 'Segoe UI', Arial, sans-serif;
+        }
+        header p {
+            font-size: 1.25rem;
+            margin-top: 0;
+            opacity: 0.92;
+            font-weight: 400;
+            animation: fadeInDown 1.2s;
+            font-style: italic;
+            letter-spacing: 1.2px;
+        }
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-30px);}
+            to { opacity: 1; transform: translateY(0);}
+        }
+        .hero {
+            background: transparent;
+            padding: 90px 20px 60px 20px;
+            text-align: center;
+            position: relative;
+            z-index: 2;
+        }
+        .hero h2 {
+            margin-top: 0;
+            font-size: 2.6rem;
+            color: #35796b;
+            letter-spacing: 1.5px;
+            font-weight: 700;
+            animation: fadeIn 1.2s;
+            text-shadow: 0 2px 12px rgba(76,175,80,0.07);
+            font-family: 'Segoe UI Semibold', 'Segoe UI', Arial, sans-serif;
+        }
+        .hero p {
+            font-size: 1.22rem;
+            color: #35796b;
+            margin-bottom: 2em;
+            animation: fadeIn 1.5s;
+            opacity: 0.96;
+            font-family: 'Segoe UI', Arial, sans-serif;
+            line-height: 1.7;
+            background: linear-gradient(90deg, #4a8d7c 60%, #6ed3cf 100%);
+            color: #fff;
+            border: none;
+            padding: 18px 44px;
+            font-size: 1.18rem;
+            border-radius: 30px 30px 40px 40px / 30px 30px 60px 60px;
+            cursor: pointer;
+            box-shadow: 0 4px 24px rgba(76,175,80,0.12);
+            transition: background 0.3s, transform 0.2s, box-shadow 0.2s;
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+        .hero .btn-main:hover {
+            background: linear-gradient(90deg, #35796b 60%, #4a8d7c 100%);
+            transform: translateY(-2px) scale(1.04);
+            box-shadow: 0 8px 32px rgba(76,175,80,0.18);
+        }
+        .about {
+            max-width: 700px;
+            margin: 60px auto 40px auto;
+            background: rgba(255,255,255,0.92);
+            padding: 48px 36px 40px 36px;
+            border-radius: 40px 60px 40px 60px / 60px 40px 60px 40px;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.07);
+            text-align: center;
+            animation: fadeIn 1.5s;
+            position: relative;
+            z-index: 2;
+        }
+        .about h3 {
+            color: #4a8d7c;
+            margin-top: 0;
+            font-size: 1.7rem;
+            margin-bottom: 0.7em;
+            font-weight: 600;
+        }
+        .about p {
+            color: #35796b;
+            font-size: 1.13rem;
+            margin-bottom: 1.2em;
+            line-height: 1.7;
+            opacity: 0.95;
+        }
+        .about .btn-secondary {
+            background: #fff;
+            color: #4a8d7c;
+            border: 2px solid #4a8d7c;
+            padding: 12px 32px;
+            border-radius: 25px 25px 35px 35px / 25px 25px 40px 40px;
+            font-size: 1.08rem;
+            cursor: pointer;
+            font-weight: 500;
+            transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+            margin-top: 10px;
+            box-shadow: 0 2px 12px rgba(76,175,80,0.07);
+        }
+        .about .btn-secondary:hover {
+            background: #4a8d7c;
+            color: #fff;
+            box-shadow: 0 6px 24px rgba(76,175,80,0.13);
+        }
+        footer {
+            background: linear-gradient(90deg, #4a8d7c 60%, #6ed3cf 100%);
+            color: #fff;
+            text-align: center;
+            padding: 38px 0 18px 0;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+            box-shadow: 0 -2px 8px rgba(0,0,0,0.04);
+            border-top-left-radius: 60px 30px;
+            border-top-right-radius: 60px 30px;
+            z-index: 2;
+        }
+        .footer-buttons {
+            margin: 0.5em 0 1em 0;
+        }
+        .footer-btn {
+            display: inline-block;
+            margin: 0 8px;
+            background: #fff;
+            color: #4a8d7c;
+            border: none;
+            border-radius: 50%;
+            width: 44px;
+            height: 44px;
+            font-size: 1.3rem;
+            line-height: 44px;
+            text-align: center;
+            cursor: pointer;
+            box-shadow: 0 2px 8px rgba(76,175,80,0.10);
+            transition: background 0.2s, color 0.2s, transform 0.2s, box-shadow 0.2s;
+        }
+        .footer-btn:hover {
+            background: #4a8d7c;
+            color: #fff;
+            transform: scale(1.12);
+        }
+        .footer-contact {
+            font-size: 1.13rem;
+            margin-bottom: 0.2em;
+            opacity: 0.95;
+        }
+        @media (max-width: 700px) {
+            .about { padding: 18px 8px; border-radius: 30px; }
+            .hero { padding: 28px 5px 22px 5px; }
+            header h1 { font-size: 1.5rem; }
+            .about h3 { font-size: 1.1rem; }
+            .nav-links { gap: 1.2rem; }
+        }
+    </style>
+    <style>
+        /* Modal styles */
+        .modal-backdrop {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0; top: 0; width: 100vw; height: 100vh;
+            background: rgba(52, 73, 94, 0.25);
+            justify-content: center;
+            align-items: center;
+        }
+        .modal-backdrop.active {
+            display: flex;
+        }
+        .modal-popup {
+            background: #fff;
+            border-radius: 32px 48px 32px 48px / 48px 32px 48px 32px;
+            box-shadow: 0 8px 32px rgba(76,175,80,0.13);
+            padding: 2.5rem 2rem 2rem 2rem;
+            max-width: 90vw;
+            width: 350px;
+            text-align: center;
+            position: relative;
+            animation: fadeInModal 0.3s;
+        }
+        @keyframes fadeInModal {
+            from { opacity: 0; transform: translateY(40px);}
+            to { opacity: 1; transform: translateY(0);}
+        }
+        .modal-popup h4 {
+            margin-top: 0;
+            color: #4a8d7c;
+            font-size: 1.3rem;
+            margin-bottom: 1em;
+        }
+        .modal-popup p {
+            color: #35796b;
+            font-size: 1.08rem;
+            margin-bottom: 2em;
+        }
+        .modal-close-btn {
+            background: linear-gradient(90deg, #4a8d7c 60%, #6ed3cf 100%);
+            color: #fff;
+            border: none;
+            border-radius: 22px 22px 30px 30px / 22px 22px 30px 30px;
+            padding: 10px 32px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            box-shadow: 0 2px 12px rgba(76,175,80,0.07);
+            transition: background 0.2s;
+        }
+        .modal-close-btn:hover {
+            background: linear-gradient(90deg, #35796b 60%, #4a8d7c 100%);
+        }
+    </style>
+    <script>
+        function showModal(title, message) {
+            document.getElementById('modal-title').textContent = title;
+            document.getElementById('modal-message').textContent = message;
+            document.getElementById('modal-backdrop').classList.add('active');
+        }
+        function closeModal() {
+            document.getElementById('modal-backdrop').classList.remove('active');
+        }
+        function bookSession() {
+            showModal(
+                'Book a Session',
+                'Thank you for your interest! Please call +27 83 2040 791 or email navisha.sooku@gmail.com to book a session.'
+            );
+        }
+        function openWhatsApp() {
+            window.open('https://wa.me/27832040791', '_blank');
+        }
+        function openEmail() {
+            window.open('mailto:navisha.sooku@gmail.com', '_blank');
+        }
+        function callNumber() {
+            window.open('tel:+27832040791');
+        }
+        // Optional: close modal on backdrop click or ESC
+        window.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') closeModal();
+        });
+        document.addEventListener('DOMContentLoaded', function() {
+            document.getElementById('modal-backdrop').addEventListener('click', function(e) {
+                if (e.target === this) closeModal();
+            });
+        });
+    </script>
+</head>
+<body>
+    <!-- Flowy SVG background waves -->
+    <svg class="bg-wave top" height="180" viewBox="0 0 1440 180" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path fill="#b2dfdb" fill-opacity="0.25" d="M0,80 C400,180 1040,0 1440,100 L1440,0 L0,0 Z"></path>
+      <path fill="#4a8d7c" fill-opacity="0.10" d="M0,120 C600,200 900,0 1440,120 L1440,0 L0,0 Z"></path>
+    </svg>
+    <nav>
+        <div class="nav-links">
+            <a href="wellness.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="services.html" class="active">Services</a>
+        </div>
+    </nav>
+    <header>
+        <h1>Our Services</h1>
+        <p>Holistic Therapies for Mind, Body & Spirit</p>
+    </header>
+    <section class="services-section" style="margin:60px auto 40px auto; max-width:900px; position:relative; z-index:2;">
+        <div class="services-list" style="display:flex;flex-wrap:wrap;justify-content:center;gap:2.5rem;">
+            <div class="service-card" style="background:#fff;border-radius:32px 48px 32px 48px/48px 32px 48px 32px;box-shadow:0 8px 32px rgba(76,175,80,0.13);padding:2.5rem 2rem 2rem 2rem;max-width:320px;min-width:220px;text-align:center;transition:transform 0.2s,box-shadow 0.2s;cursor:pointer;" 
+                onclick="showFeature('Rife Therapy', 'Non-invasive frequency therapy to support healing and wellness at the cellular level. Experience gentle, targeted sessions for your unique needs.')">
+                <div style="font-size:2.5rem;margin-bottom:0.7em;">&#128171;</div>
+                <h4 style="color:#4a8d7c;margin-bottom:0.7em;font-size:1.3rem;">Rife Therapy</h4>
+                <p style="color:#35796b;font-size:1.08rem;margin-bottom:0.7em;">Non-invasive frequency therapy to support healing and wellness at the cellular level.</p>
+                <div style="font-weight:600;color:#35796b;margin-bottom:1em;">R450</div>
+                <button class="service-btn" onclick="event.stopPropagation();window.open('https://wa.me/27832040791','_blank')">Enquire via WhatsApp</button>
+            </div>
+            <div class="service-card" style="background:#fff;border-radius:32px 48px 32px 48px/48px 32px 48px 32px;box-shadow:0 8px 32px rgba(76,175,80,0.13);padding:2.5rem 2rem 2rem 2rem;max-width:320px;min-width:220px;text-align:center;transition:transform 0.2s,box-shadow 0.2s;cursor:pointer;" 
+                onclick="showFeature('Cupping', 'Ancient technique using suction cups to improve circulation, relieve pain, and detoxify. Feel lighter and more relaxed after each session.')">
+                <div style="font-size:2.5rem;margin-bottom:0.7em;">&#129658;</div>
+                <h4 style="color:#4a8d7c;margin-bottom:0.7em;font-size:1.3rem;">Cupping</h4>
+                <p style="color:#35796b;font-size:1.08rem;margin-bottom:0.7em;">Ancient technique using suction cups to improve circulation, relieve pain, and detoxify.</p>
+                <div style="font-weight:600;color:#35796b;margin-bottom:1em;">R450</div>
+                <button class="service-btn" onclick="event.stopPropagation();window.open('https://wa.me/27832040791','_blank')">Enquire via WhatsApp</button>
+            </div>
+            <div class="service-card" style="background:#fff;border-radius:32px 48px 32px 48px/48px 32px 48px 32px;box-shadow:0 8px 32px rgba(76,175,80,0.13);padding:2.5rem 2rem 2rem 2rem;max-width:320px;min-width:220px;text-align:center;transition:transform 0.2s,box-shadow 0.2s;cursor:pointer;" 
+                onclick="showFeature('Bio-Resonance', 'Advanced biofeedback therapy to identify and address energetic imbalances in the body. Restore harmony and vitality naturally.')">
+                <div style="font-size:2.5rem;margin-bottom:0.7em;">&#128300;</div>
+                <h4 style="color:#4a8d7c;margin-bottom:0.7em;font-size:1.3rem;">Bio-Resonance</h4>
+                <p style="color:#35796b;font-size:1.08rem;margin-bottom:0.7em;">Advanced biofeedback therapy to identify and address energetic imbalances in the body.</p>
+                <div style="font-weight:600;color:#35796b;margin-bottom:1em;">R750</div>
+                <button class="service-btn" onclick="event.stopPropagation();window.open('https://wa.me/27832040791','_blank')">Enquire via WhatsApp</button>
+            </div>
+            <div class="service-card" style="background:#fff;border-radius:32px 48px 32px 48px/48px 32px 48px 32px;box-shadow:0 8px 32px rgba(76,175,80,0.13);padding:2.5rem 2rem 2rem 2rem;max-width:320px;min-width:220px;text-align:center;transition:transform 0.2s,box-shadow 0.2s;cursor:pointer;" 
+                onclick="showFeature('Kinesiology', 'Gentle, holistic therapy using muscle testing to identify imbalances and support your body’s natural healing process.')">
+                <div style="font-size:2.5rem;margin-bottom:0.7em;">&#129495;</div>
+                <h4 style="color:#4a8d7c;margin-bottom:0.7em;font-size:1.3rem;">Kinesiology</h4>
+                <p style="color:#35796b;font-size:1.08rem;margin-bottom:0.7em;">Gentle, holistic therapy using muscle testing to identify imbalances and support your body’s natural healing process.</p>
+                <div style="font-weight:600;color:#35796b;margin-bottom:1em;">R550</div>
+                <button class="service-btn" onclick="event.stopPropagation();window.open('https://wa.me/27832040791','_blank')">Enquire via WhatsApp</button>
+            </div>
+            <div class="service-card" style="background:#fff;border-radius:32px 48px 32px 48px/48px 32px 48px 32px;box-shadow:0 8px 32px rgba(76,175,80,0.13);padding:2.5rem 2rem 2rem 2rem;max-width:320px;min-width:220px;text-align:center;transition:transform 0.2s,box-shadow 0.2s;cursor:pointer;" 
+                onclick="showFeature('Auricular Acupuncture', 'A gentle therapy using fine needles on the ear to help with stress, pain, and overall wellness.')">
+                <div style="font-size:2.5rem;margin-bottom:0.7em;">&#129658;&#128137;</div>
+                <h4 style="color:#4a8d7c;margin-bottom:0.7em;font-size:1.3rem;">Auricular Acupuncture</h4>
+                <p style="color:#35796b;font-size:1.08rem;margin-bottom:0.7em;">Gentle ear acupuncture to support stress relief, pain management, and balance.</p>
+                <div style="font-weight:600;color:#35796b;margin-bottom:1em;">Price on Request</div>
+                <button class="service-btn" onclick="event.stopPropagation();window.open('https://wa.me/27832040791','_blank')">Enquire via WhatsApp</button>
+            </div>
+            <div class="service-card" style="background:#fff;border-radius:32px 48px 32px 48px/48px 32px 48px 32px;box-shadow:0 8px 32px rgba(76,175,80,0.13);padding:2.5rem 2rem 2rem 2rem;max-width:320px;min-width:220px;text-align:center;transition:transform 0.2s,box-shadow 0.2s;cursor:pointer;" 
+                onclick="showFeature('Corporate Wellness', 'Tailored wellness programs for organizations to boost employee health, morale, and productivity.')">
+                <div style="font-size:2.5rem;margin-bottom:0.7em;">&#128188;</div>
+                <h4 style="color:#4a8d7c;margin-bottom:0.7em;font-size:1.3rem;">Corporate Wellness</h4>
+                <p style="color:#35796b;font-size:1.08rem;margin-bottom:0.7em;">Wellness programs for organizations to enhance employee well-being and productivity.</p>
+                <div style="font-weight:600;color:#35796b;margin-bottom:1em;">Customised Package</div>
+                <button class="service-btn" onclick="event.stopPropagation();window.open('https://wa.me/27832040791','_blank')">Enquire via WhatsApp</button>
+            </div>
+        </div>
+    </section>
+    <style>
+        .service-btn {
+            background: linear-gradient(90deg, #4a8d7c 60%, #6ed3cf 100%);
+            color: #fff;
+            border: none;
+            border-radius: 30px 30px 40px 40px / 30px 30px 60px 60px;
+            cursor: pointer;
+            font-weight: 600;
+            letter-spacing: 1px;
+            box-shadow: 0 4px 24px rgba(76,175,80,0.12);
+            transition: 
+                background 0.3s, 
+                transform 0.18s cubic-bezier(.4,2,.6,1), 
+                box-shadow 0.2s,
+                color 0.2s;
+            outline: none;
+            position: relative;
+            overflow: hidden;
+            padding: 14px 32px;
+            font-size: 1.08rem;
+            margin-top: 10px;
+        }
+        .service-btn:hover {
+            background: linear-gradient(90deg, #35796b 60%, #4a8d7c 100%);
+            color: #fff;
+            transform: translateY(-2px) scale(1.06);
+            box-shadow: 0 8px 32px rgba(76,175,80,0.18);
+        }
+    </style>
+    <!-- Feature Modal -->
+    <div id="feature-modal-backdrop" class="modal-backdrop">
+        <div class="modal-popup">
+            <h4 id="feature-modal-title"></h4>
+            <p id="feature-modal-message"></p>
+            <button class="modal-close-btn" onclick="closeFeatureModal()">Close</button>
+        </div>
+    </div>
+    <script>
+        function showFeature(title, message) {
+            document.getElementById('feature-modal-title').textContent = title;
+            document.getElementById('feature-modal-message').textContent = message;
+            document.getElementById('feature-modal-backdrop').classList.add('active');
+        }
+        function closeFeatureModal() {
+            document.getElementById('feature-modal-backdrop').classList.remove('active');
+        }
+        window.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') closeFeatureModal();
+        });
+        document.addEventListener('DOMContentLoaded', function() {
+            document.getElementById('feature-modal-backdrop').addEventListener('click', function(e) {
+                if (e.target === this) closeFeatureModal();
+            });
+        });
+    </script>
+    <footer>
+        <div class="footer-contact">
+            Contact: <a href="tel:+27832040791" style="color:#fff;text-decoration:underline;">+27 83 2040 791</a> | 
+            <a href="mailto:navisha.sooku@email.com" style="color:#fff;text-decoration:underline;">navisha.sooku@email.com</a>
+            <br>
+            <span style="font-size:1.05rem;opacity:0.9;">Location: Johannesburg, Sunninghill</span>
+        </div>
+        <div class="footer-buttons">
+            <button class="footer-btn" title="WhatsApp" onclick="window.open('https://wa.me/27832040791','_blank')">&#128241;</button>
+            <button class="footer-btn" title="Email" onclick="window.open('mailto:navisha.sooku@gmail.com')">&#9993;</button>
+            <button class="footer-btn" title="Call" onclick="window.open('tel:+27832040791')">&#128222;</button>
+        </div>
+        <p style="margin-top:0.5em;">&copy; 2024 Navisha Sooku Wellness</p>
+    </footer>
+    <svg class="bg-wave bottom" height="180" viewBox="0 0 1440 180" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path fill="#b2dfdb" fill-opacity="0.25" d="M0,80 C400,180 1040,0 1440,100 L1440,180 L0,180 Z"></path>
+      <path fill="#4a8d7c" fill-opacity="0.10" d="M0,120 C600,200 900,0 1440,120 L1440,180 L0,180 Z"></path>
+    </svg>
+</body>
+</html>
